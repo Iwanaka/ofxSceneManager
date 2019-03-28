@@ -1,10 +1,10 @@
 # ofxSceneManager
 
 ### Overview
-referenced by https://github.com/kokinomura/ofxSceneManager.
-Added function, transition mode "Slide", function "delay".
-Added basic events. mouse move mouse scrolled, mouse exits, mouse entered.
-Changed dependency addon ofxTween to ofxEasing.
+referenced by https://github.com/kokinomura/ofxSceneManager.<br>
+Added function, transition mode "Slide", function "delay".<br>
+Added basic events. mouse move mouse scrolled, mouse exits, mouse entered.<br>
+Changed dependency addon ofxTween to ofxEasing.<br>
 
 ### Dependency
 ofxEaging
