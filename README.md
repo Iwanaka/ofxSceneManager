@@ -11,11 +11,11 @@ ofxEaging
 
 #### crousel
 <!-- ![crousel](images/crousel.gif) -->
-<img src="images/crousel.gif" width="160">
+<img src="images/crousel.gif" width="320px">
 
 #### simple fade in out
 <!-- ![fade](images/fade.gif) -->
-<img src="images/fade.gif" width="160px">
+<img src="images/fade.gif" width="320px">
 
 ### Getting Started
 
