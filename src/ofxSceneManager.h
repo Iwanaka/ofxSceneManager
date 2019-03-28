@@ -7,51 +7,50 @@
 //
 //
 
-#ifndef __KokiNomura__ofxSceneManager__
-#define __KokiNomura__ofxSceneManager__
+#pragma once
 
 #include "ofxScene.h"
-
-enum ofxSmTransition{
-	TRANSITION_SWITCH,
-    TRANSITION_FADE,
-	TRANSITION_SLIDE_LEFT_IN,
-	TRANSITION_SLIDE_RIGHT_IN,
-	TRANSITION_SLIDE_TOP_IN,
-	TRANSITION_SLIDE_BOTTOM_IN
-};
 
 class ofxSceneManager {
 public:
 
-    void run();
-    
+	ofxSceneManager();
+	~ofxSceneManager();
+
+
+	void setup(int screenWidth, int screenHeight);
+
     void update();
     void draw();
+	void draw(int x, int y);
 
-    //void changeScene();
+	void addScene(ofPtr<ofxScene> pScene);
+
     void changeScene(unsigned int sceneIndex);
-	void changeScene(unsigned int sceneIndex, ofxSmTransition t);
-
-    void addScene(ofPtr<ofxScene> pScene);
+	void changeScene(unsigned int sceneIndex, ofxSceneTransition t);
 
     void setExitByTime(bool b);
     void setSceneDuration(float drawInSec, float drawOutSec);
     void setSceneDuration(float drawInSec, float drawingSec, float drawOutSec);  
 	void setSceneDuration(float drawInSec, float drawOutSec, float drawingSec, float drawDelaySec);
-	void setSceneDelayDuration(float drawDelaySec);
+	void setDelayDuration(float drawDelaySec);
 
-	void setTransitionMode(ofxSmTransition t);
+	void setTransitionMode(ofxSceneTransition t);
 
 	int getBeforeSceneIndex();
 	int getCurrentSceneIndex();
 	int getSceneIndex(ofPtr<ofxScene> scene);
 	bool isTransition();
-    vector<ofPtr<ofxScene> > scenes;
+    
+	
+	vector<ofPtr<ofxScene> > scenes;
+
 
  private:
-	int _beforeSceneIndex = 0;
-    int _sceneIndex = 0;
+
+
+	int _beforeSceneIndex;
+    int _sceneIndex;
     int _nextSceneIndex;
     
     ofPtr<ofxScene> _currentScene;
@@ -60,8 +59,9 @@ public:
     ofFbo _fbo;
     ofFbo _nextFbo;
     
-    ofxSmTransition transition = TRANSITION_FADE;
-    bool _isInTransition = false;
+	ofxSceneTransition _transition;
+
+	bool _isInTransition;
     
     void _onStartDrawIn(bool &b);
     void _onStartDrawing(bool &b);
@@ -75,9 +75,10 @@ public:
     void _mouseDragged(ofMouseEventArgs & args);
     void _mousePressed(ofMouseEventArgs & args);
     void _mouseReleased(ofMouseEventArgs & args);
+	void _mouseScrolled(ofMouseEventArgs & args);
+	void _mouseEntered(ofMouseEventArgs & args);
+	void _mouseExited(ofMouseEventArgs & args);
     void _windowResized(ofResizeEventArgs & args);
     void _dragEvent(ofDragInfo & dragInfo);
     void _gotMessage(ofMessage & msg);
 };
-
-#endif /* defined(__KokiNomura__ofxSceneManager__) */
