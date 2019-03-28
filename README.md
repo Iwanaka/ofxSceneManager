@@ -10,11 +10,12 @@ Changed dependency addon ofxTween to ofxEasing.
 ofxEaging
 
 #### crousel
-![crousel](images/Screenshot.png)
+<!-- ![crousel](images/crousel.gif) -->
+<img src="images/crousel.gif" width="160">
 
 #### simple fade in out
-![fade](images/Screenshot.png)
-
+<!-- ![fade](images/fade.gif) -->
+<img src="images/fade.gif" width="160px">
 
 ### Getting Started
 
