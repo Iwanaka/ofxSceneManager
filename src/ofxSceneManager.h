@@ -18,7 +18,9 @@ public:
 	~ofxSceneManager();
 
 
+	void setup();
 	void setup(int screenWidth, int screenHeight);
+	void setScreen(int screenWidth, int screenHeight);
 
     void update();
     void draw();

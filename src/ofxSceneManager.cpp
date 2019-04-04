@@ -60,10 +60,29 @@ ofxSceneManager::~ofxSceneManager() {
 }
 
 //--------------------------------------------------------------
+void ofxSceneManager::setup() {
+
+	ofPtr<ofxScene> previousScene;
+	previousScene = _currentScene;
+	_currentScene = scenes.at(_sceneIndex);
+
+	_currentScene->startScene(previousScene, _transition);
+
+}
+
+//--------------------------------------------------------------
 void ofxSceneManager::setup(int screenWidth, int screenHeight) {
 
+	setScreen(screenWidth, screenHeight);
+	setup();
+
+}
+
+//--------------------------------------------------------------
+void ofxSceneManager::setScreen(int screenWidth, int screenHeight) {
+
 	//fbo setup
-	_fbo.allocate(screenWidth, screenWidth, GL_RGBA);
+	_fbo.allocate(screenWidth, screenHeight, GL_RGBA);
 	_nextFbo.allocate(screenWidth, screenHeight, GL_RGBA);
 
 	_fbo.begin();
@@ -73,13 +92,6 @@ void ofxSceneManager::setup(int screenWidth, int screenHeight) {
 	_nextFbo.begin();
 	ofClear(255, 255, 255, 0);
 	_nextFbo.end();
-
-
-	ofPtr<ofxScene> previousScene;
-	previousScene = _currentScene;
-	_currentScene = scenes.at(_sceneIndex);
-
-	_currentScene->startScene(previousScene, _transition);
 
 }
 
